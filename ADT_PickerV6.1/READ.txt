@@ -1,0 +1,10 @@
+You need python to use this tool.
+You can grab it here : https://www.python.org/downloads/
+Put "adt_pickerV.6.1.py" in a folder, create a Export folder if u want.
+It's in french right now, but EN version will come asap.
+"adt_picker_config.json" is here to save adt & wdt export name. U can assign a folder too for extraction.
+
+What is this tool for ? Have you heard of GrullmeWDT ? And Rius Smasher ? Well, it's kind of like having both of them combined into a single tool.
+
+Issues :
+Due to python "engine" it could be laggy when u use the drag on layer.
