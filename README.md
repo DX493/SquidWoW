@@ -1,2 +1,30 @@
 ## Project to port T-WoW Maps / content in 3.3.5
+
+
+
 The project is still in its early stages. There are still many issues to be resolved. One step at a time.
+
+
+
+## The goal ?
+
+
+
+Make on Open-Source T-WoW port for 3.3.5, but optimized. By “optimized,” I mean that T-WoW uses patches and game objects that are already present in TBC and WOTLK, so including these game objects serves no practical purpose in patch 3.3.5 (unless the paths differ, in which case it would be better to keep them to avoid confusing the mapping tool and prevent invisible buildings). . If possible, this will slightly optimize the space the game takes up.
+
+
+
+### How do I go about this ?
+
+
+
+First, to avoid crashing my mapping tool and yours, I’ll need to clean up the map because there are a lot of conflicting UIDs. Since the import treats this as a “clean” project, it could cause the software to crash as soon as it launches. So… we’ll proceed step by step, one ADT at a time, even if it takes a while.
+
+
+
+##### “Okay, fine, but do you have any idea how to move forward ? A roadmap ?”
+
+
+
+As I said, first I'm going to try to restore everything, ADT / tile by tile, check if m2s and wmos are here. Next ? Well, that alone would already be pretty good. But why not adapt the current T-WoW DBCs, or even the lighting file, for 3.3.5 ? And... after that... consider something that could be ported back down to 1.12? But that's a long way off.
+
