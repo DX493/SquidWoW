@@ -1,0 +1,42 @@
+================================================================
+  RAPPORT DE LOG  —  30/04/2026 15:14:31
+  Source : C:/Users/dylan/OneDrive/Bureau/exemple.txt
+================================================================
+
+[WRONG M2 VERSION]  (1 erreur)
+----------------------------------------------------------------
+  - world/expansion01/doodads/generic/bloodelf/translocator/be_translocator.m2  →  version 256
+
+[WMO INTROUVABLES]  (12 erreurs)
+----------------------------------------------------------------
+  - world/wmo/outland/nethermicros/nethermicro_03.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfcommand/highelfcommand.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfhousevariantf/highelfhousevariantf.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfhousevariantg/highelfhousevariantg.wmo
+  - world/wmo/dungeon/md_bloodelf_crystaltower/high1elf_micro.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfroundhousevariantb/highelfhouseroundvariantb.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfhousevariantd/highelfhousevariantd.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfroundhousevarianta/highelfhouseroundvarianta.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfhousevariantb/highelfhousevariantb.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfhousevariantc/highelfhousevariantc.wmo
+  - world/wmo/lorderon/buildings/silvermoon/highelfhousevarianta/highelfhousevarianta.wmo
+  - world/wmo/lorderon/buildings/silvermoon/bloodelfdock/highelfdock.wmo
+
+[M2 INTROUVABLES]  (4 erreurs)
+----------------------------------------------------------------
+  - world/expansion01/doodads/generic/bloodelf/trees/hightelventree02.m2
+  - world/expansion01/doodads/generic/bloodelf/tents/be_tent05.m2
+  - world/expansion01/doodads/ghostlands/arch/elvenlands_arch_01.m2
+  - world/kalimdor/kalidar/passivedoodads/oracletree/higheltree.m2
+
+[TEXTURES INTROUVABLES]  (5 erreurs)
+----------------------------------------------------------------
+  - error_1.blp
+  - error_2.blp
+  - dungeons/textures/pillar/jlo_high1elf_pillar_01.blp
+  - dungeons/textures/floor/jlo_high1elf_floor_02.blp
+  - dungeons/textures/windows/jlo_high1elf_windows.blp
+
+================================================================
+  TOTAL : 22 erreurs trouvées
+================================================================
