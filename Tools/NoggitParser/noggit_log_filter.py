@@ -355,24 +355,54 @@ class LogFilterApp:
         self.file_var = tk.StringVar(value=self.config.get("last_log_path", ""))
 
         if DND_AVAILABLE:
-            lbl = tk.Label(
+            tk.Label(
                 file_frame,
-                text="Glissez-déposez votre fichier ici, ou utilisez le bouton :",
+                text="Glissez-déposez votre fichier log ou utilisez le bouton :",
                 fg="#888", font=("Segoe UI", 9, "italic"),
-            )
-            lbl.pack(anchor="w")
-            lbl.drop_target_register(DND_FILES)
-            lbl.dnd_bind("<<Drop>>", self._on_drop)
+            ).pack(anchor="w")
 
         row = tk.Frame(file_frame)
         row.pack(fill="x", pady=4)
-        tk.Entry(row, textvariable=self.file_var, font=("Segoe UI", 9)).pack(
-            side="left", fill="x", expand=True
-        )
+        entry_log = tk.Entry(row, textvariable=self.file_var, font=("Segoe UI", 9))
+        entry_log.pack(side="left", fill="x", expand=True)
         tk.Button(
             row, text="Parcourir…", command=self._browse_file,
             font=("Segoe UI", 9),
         ).pack(side="left", padx=(6, 0))
+
+        # Drag & drop sur toute la zone (frame + entry)
+        if DND_AVAILABLE:
+            for widget in (file_frame, row, entry_log):
+                widget.drop_target_register(DND_FILES)
+                widget.dnd_bind("<<Drop>>", self._on_drop)
+
+        # ── Dossier de sortie ─────────────────────────────────────────────
+        self._section_label(f, "📁  Dossier de sortie")
+        out_frame = tk.Frame(f)
+        out_frame.pack(fill="x", padx=16, pady=4)
+
+        if DND_AVAILABLE:
+            tk.Label(
+                out_frame,
+                text="Glissez-déposez un dossier ici ou utilisez le bouton :",
+                fg="#888", font=("Segoe UI", 9, "italic"),
+            ).pack(anchor="w")
+
+        self.out_var = tk.StringVar(value=self.config.get("last_output_path", ""))
+
+        out_row = tk.Frame(out_frame)
+        out_row.pack(fill="x", pady=4)
+        entry_out = tk.Entry(out_row, textvariable=self.out_var, font=("Segoe UI", 9))
+        entry_out.pack(side="left", fill="x", expand=True)
+        tk.Button(
+            out_row, text="Parcourir…", command=self._browse_output,
+            font=("Segoe UI", 9),
+        ).pack(side="left", padx=(6, 0))
+
+        if DND_AVAILABLE:
+            for widget in (out_frame, out_row, entry_out):
+                widget.drop_target_register(DND_FILES)
+                widget.dnd_bind("<<Drop>>", self._on_drop_output)
 
         # ── Catégories intelligentes ──────────────────────────────────────
         self._section_label(f, "⚙️  Catégories intelligentes")
@@ -558,10 +588,67 @@ class LogFilterApp:
                 Tooltip(cb, cf["description"])
 
             tk.Button(
+                row, text="Edit", relief="flat",
+                cursor="hand2", font=("Segoe UI", 8),
+                command=lambda idx=i: self._edit_custom_filter(idx),
+            ).pack(side="left", padx=(4, 0))
+            tk.Button(
                 row, text="✕", fg="red", relief="flat",
                 cursor="hand2", font=("Segoe UI", 8),
                 command=lambda idx=i: self._remove_custom_filter(idx),
-            ).pack(side="left", padx=4)
+            ).pack(side="left", padx=2)
+
+    def _edit_custom_filter(self, idx):
+        cf = self.custom_filters[idx]
+
+        win = tk.Toplevel(self.root)
+        win.title("Modifier le filtre")
+        win.resizable(False, False)
+        win.grab_set()  # modal
+
+        pad = {"padx": 10, "pady": 4}
+
+        tk.Label(win, text="Nom :", font=("Segoe UI", 9)).grid(row=0, column=0, sticky="w", **pad)
+        e_name = tk.Entry(win, width=30, font=("Segoe UI", 9))
+        e_name.insert(0, cf["name"])
+        e_name.grid(row=0, column=1, **pad)
+
+        tk.Label(win, text="Pattern :", font=("Segoe UI", 9)).grid(row=1, column=0, sticky="w", **pad)
+        e_pattern = tk.Entry(win, width=30, font=("Segoe UI", 9))
+        e_pattern.insert(0, cf["pattern"])
+        e_pattern.grid(row=1, column=1, **pad)
+
+        tk.Label(win, text="Description :", font=("Segoe UI", 9)).grid(row=2, column=0, sticky="w", **pad)
+        e_desc = tk.Entry(win, width=30, font=("Segoe UI", 9))
+        e_desc.insert(0, cf.get("description", ""))
+        e_desc.grid(row=2, column=1, **pad)
+
+        def _save():
+            name    = e_name.get().strip()
+            pattern = e_pattern.get().strip()
+            desc    = e_desc.get().strip()
+            if not name or not pattern:
+                messagebox.showwarning("Champs requis",
+                                       "Le nom et le pattern sont obligatoires.", parent=win)
+                return
+            self.custom_filters[idx]["name"]        = name
+            self.custom_filters[idx]["pattern"]     = pattern
+            self.custom_filters[idx]["description"] = desc
+            # Forcer la recréation de la var pour que le label se mette à jour
+            key = f"custom_{idx}"
+            if key in self.builtin_vars:
+                del self.builtin_vars[key]
+            win.destroy()
+            self._rebuild_custom_list()
+            self._save_state()
+
+        btn_f = tk.Frame(win)
+        btn_f.grid(row=3, column=0, columnspan=2, pady=8)
+        tk.Button(btn_f, text="💾 Enregistrer", command=_save,
+                  bg="#1e66f5", fg="white", relief="flat",
+                  font=("Segoe UI", 9)).pack(side="left", padx=6)
+        tk.Button(btn_f, text="Annuler", command=win.destroy,
+                  font=("Segoe UI", 9)).pack(side="left")
 
     def _add_custom_filter(self):
         name    = self.new_name.get().strip()
@@ -609,6 +696,20 @@ class LogFilterApp:
         self._save_state()
         self._detect_extra_sources(path)
 
+    def _browse_output(self):
+        path = filedialog.askdirectory(title="Sélectionner le dossier de sortie")
+        if path:
+            self.out_var.set(path)
+            self._save_state()
+
+    def _on_drop_output(self, event):
+        path = event.data.strip().strip("{}")
+        # Si on glisse un fichier, on prend son dossier parent
+        if os.path.isfile(path):
+            path = os.path.dirname(path)
+        self.out_var.set(path)
+        self._save_state()
+
     def _detect_extra_sources(self, filepath):
         """Détecte automatiquement les sources [Error] inconnues dans le log."""
         p = re.compile(r'\(([^:)]+\.[a-zA-Z]+):\d+\).*?\[Error\]', re.IGNORECASE)
@@ -628,6 +729,7 @@ class LogFilterApp:
 
     def _save_state(self):
         self.config["last_log_path"]    = self.file_var.get()
+        self.config["last_output_path"] = self.out_var.get()
         self.config["smart_categories"] = {k: v.get() for k, v in self.smart_vars.items()}
         self.config["builtin_sources"]  = {
             k: v.get() for k, v in self.builtin_vars.items()
@@ -661,9 +763,11 @@ class LogFilterApp:
             self.status_var.set("❌ Erreur lors de l'analyse.")
             return
 
-        log_dir  = os.path.dirname(path)
+        out_dir = self.out_var.get().strip()
+        if not out_dir or not os.path.isdir(out_dir):
+            out_dir = os.path.dirname(path)  # fallback : même dossier que le log
         out_name = f"log_filtered_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt"
-        out_path = os.path.join(log_dir, out_name)
+        out_path = os.path.join(out_dir, out_name)
 
         try:
             with open(out_path, "w", encoding="utf-8") as f:
@@ -697,3 +801,5 @@ if __name__ == "__main__":
 
     app = LogFilterApp(root)
     root.mainloop()
+
+# DX493 Github
