@@ -10,6 +10,10 @@
             {
                 "MapId": 6969,
                 "MapName": "AzerothTurtle"
+            },
+            {
+                "MapId": 6970,
+                "MapName": "KalimdorTurtle"
             }
         ],
         "ProjectName": "Turtle335"
