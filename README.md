@@ -28,3 +28,8 @@ First, to avoid crashing my mapping tool and yours, I’ll need to clean up the 
 
 As I said, first I'm going to try to restore everything, ADT / tile by tile, check if m2s and wmos are here. Next ? Well, that alone would already be pretty good. But why not adapt the current T-WoW DBCs, or even the lighting file, for 3.3.5 ? And... after that... consider something that could be ported back down to 1.12? But that's a long way off.
 
+
+
+***Known issues :***
+
+* Vanilla "m2 wrong version" in noggit, i can't convert them to 3.3.5 .. But this is not specific for all. I think the only ones i can't convert are M2s that will contain complex animations and particles. I will try to fix this issue but help is welcome. That's the biggest problem i've encountered so far.
