@@ -1,0 +1,7 @@
+Folder for "mpq_resource_finder.py"
+How to make it functionnal :
+patch-0.mpq (Archive) + patch-0.txt (Listfile. The resource finder will look into it can look if patch-0.mpq got the resource u want and can extract it directly with the correct path for the architecture corresponding to WoW )
+
+- Stormlib is a must have. MPYQ can cause corrupted extraction.
+
+If you don't know how to extract a listfile from an MPQ file, it's easy. Open the archive with MPQEditor Ladiks or a similar program, and at the root of the MPQ you'll see a file named “(listfile)”. That's the one—extract it and rename it to match the patch name. (If it comes from patch-0.mpq, name it patch-0.txt.)

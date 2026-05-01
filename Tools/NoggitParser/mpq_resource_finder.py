@@ -209,7 +209,7 @@ def parse_rapport(rapport_path):
     """Extrait tous les chemins de ressources manquantes depuis un rapport filtré."""
     resources = []
     # Capture les lignes du rapport qui commencent par "  - "
-    p = re.compile(r'^\s+-\s+([\w/.\-]+\.(m2|wmo|blp))', re.IGNORECASE)
+    p = re.compile(r'^\s+-\s+([\w/.\- ]+\.(m2|wmo|blp))', re.IGNORECASE)
     try:
         with open(rapport_path, "r", encoding="utf-8", errors="replace") as f:
             for line in f:
@@ -217,10 +217,10 @@ def parse_rapport(rapport_path):
                 if m:
                     # Exclure les lignes "Wrong version" qui ont une flèche
                     if "→" not in line:
-                        resources.append(m.group(1))
+                        resources.append(m.group(1).rstrip())
                     else:
                         # Pour wrong version, on prend juste le chemin (avant la flèche)
-                        resources.append(m.group(1))
+                        resources.append(m.group(1).rstrip())
     except Exception as e:
         raise RuntimeError(f"Impossible de lire le rapport : {e}")
     return list(dict.fromkeys(resources))  # dédupliquer en gardant l'ordre
