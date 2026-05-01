@@ -7,6 +7,10 @@
             "ClientVersion": "Wrath Of The Lich King"
         },
         "PinnedMaps": [
+            {
+                "MapId": 6969,
+                "MapName": "AzerothTurtle"
+            }
         ],
         "ProjectName": "Turtle335"
     }
