@@ -10,7 +10,7 @@ The project is still in its early stages. There are still many issues to be reso
 
 
 
-Make on Open-Source T-WoW port for 3.3.5, but optimized. By “optimized,” I mean that T-WoW uses patches and game objects that are already present in TBC and WOTLK, so including these game objects serves no practical purpose in patch 3.3.5 (unless the paths differ, in which case it would be better to keep them to avoid confusing the mapping tool and prevent invisible buildings). . If possible, this will slightly optimize the space the game takes up.
+Make a Open-Source T-WoW port for 3.3.5, but optimized. By “optimized,” I mean that T-WoW uses patches and game objects that are already present in TBC and WOTLK, so including these game objects serves no practical purpose in patch 3.3.5 (unless the paths differ, in which case it would be better to keep them to avoid confusing the mapping tool and prevent invisible buildings). . If possible, this will slightly optimize the space the game takes up.
 
 
 
@@ -33,6 +33,7 @@ As I said, first I'm going to try to restore everything, ADT / tile by tile, che
 ***Known issues :***
 
 * Vanilla "m2 wrong version" in noggit, i can't convert them to 3.3.5 .. But this is not specific for all. I think the only ones i can't convert are M2s that will contain complex animations and particles. I will try to fix this issue but help is welcome. That's the biggest problem i've encountered so far.
+* WaterChunk, MCLQ replace by MH2O chunk. Cause crashes if u touch water in Noggit.
 
 
 
@@ -49,6 +50,7 @@ As I said, first I'm going to try to restore everything, ADT / tile by tile, che
 
 * Fix crash around elwynn. Broken textures in Gilneas city.
 * I NEED TO FIND A SOLUTION FOR CUSTOM M2 GODSAKE PLZ T\*RTA OR SOMEONE GIVE ME THE FILES
+* WaterChunk is a problem. Need to fix it. I have multiple choice. But one of my solution is the worth case. If i want find a solution i need to rebuilt the map from scratch.
 * Taking care of myself, staying healthy and sane
 * ...
 * *:)*
