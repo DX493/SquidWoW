@@ -33,3 +33,22 @@ As I said, first I'm going to try to restore everything, ADT / tile by tile, che
 ***Known issues :***
 
 * Vanilla "m2 wrong version" in noggit, i can't convert them to 3.3.5 .. But this is not specific for all. I think the only ones i can't convert are M2s that will contain complex animations and particles. I will try to fix this issue but help is welcome. That's the biggest problem i've encountered so far.
+
+
+
+
+
+###### ***Work i did :***
+
+* **Eastern Kingdom** added. Bug a strange crash occur around Elwynn / Westfall
+* **Kalimdor** added. No UID Error .. or less. Kalimdor is pretty clean compare to Eastern Kingdom.
+
+
+
+###### ***Next step right now :***
+
+* Fix crash around elwynn. Broken textures in Gilneas city.
+* I NEED TO FIND A SOLUTION FOR CUSTOM M2 GODSAKE PLZ T\*RTA OR SOMEONE GIVE ME THE FILES
+* Taking care of myself, staying healthy and sane
+* ...
+* *:)*
