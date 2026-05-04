@@ -48,7 +48,7 @@ As I said, first I'm going to try to restore everything, ADT / tile by tile, che
 
 ###### ***Next step right now :***
 
-* Fix crash around elwynn. Broken textures in Gilneas city.
+* Broken textures in Gilneas city.
 * I NEED TO FIND A SOLUTION FOR CUSTOM M2 GODSAKE PLZ T\*RTA OR SOMEONE GIVE ME THE FILES
 * WaterChunk is a problem. Need to fix it. I have multiple choice. But one of my solution is the worst case. If i want find a solution i need to rebuilt the map from scratch.
 * Taking care of myself, staying healthy and sane
