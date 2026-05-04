@@ -9,6 +9,11 @@
             "MapId": 6969,
             "ObjectGroups": [
             ]
+        },
+        {
+            "MapId": 1,
+            "ObjectGroups": [
+            ]
         }
     ]
 }
