@@ -41,8 +41,8 @@ As I said, first I'm going to try to restore everything, ADT / tile by tile, che
 
 ###### ***Work i did :***
 
-* **Eastern Kingdom** added. Bug a strange crash occur around Elwynn / Westfall
-* **Kalimdor** added. No UID Error .. or less. Kalimdor is pretty clean compare to Eastern Kingdom.
+* **Eastern Kingdom** added.
+* **Kalimdor** added.
 
 
 
@@ -50,7 +50,8 @@ As I said, first I'm going to try to restore everything, ADT / tile by tile, che
 
 * Broken textures in Gilneas city.
 * I NEED TO FIND A SOLUTION FOR CUSTOM M2 GODSAKE PLZ T\*RTA OR SOMEONE GIVE ME THE FILES
-* WaterChunk is a problem. Need to fix it. I have multiple choice. But one of my solution is the worst case. If i want find a solution i need to rebuilt the map from scratch.
+* WaterChunk is a problem. Need to fix it. I have multiple choice. But one of my solution is the worst case. If i want find a solution i need to rebuilt the map from scratch. ( I have a solution, maybe. Need to investigate more and test. )
+* Next step are dungeons, DBCs related to maps (AreaZone, Lights .. )
 * Taking care of myself, staying healthy and sane
 * ...
 * *:)*
